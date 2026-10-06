@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { useForm } from "../hooks/useForm";
 import { useState } from "react";
 
@@ -6,6 +6,7 @@ export const LoginPage = () => {
   const navigate = useNavigate(); // <- esto es un hook , reemplaza a link y permite navegar despues del login
 
   const [loading, setLoading] = useState(false);
+  //nota-> aca manejamos un unico error que nos puede devolver el backend a diferencia del register que puede devolver varios en un array
   const [error, setError] = useState(null); // -> puse null porque no hay errores como inicio
 
   const {formState, handleInputChange} = useForm({
@@ -52,6 +53,8 @@ export const LoginPage = () => {
         <button type="submit">
             {loading ? "cargando.." : "enviar"}
         </button>
+
+        ¿No tenés cuenta? <Link to="/register">Registrate</Link>
       </form>
     </>
   );

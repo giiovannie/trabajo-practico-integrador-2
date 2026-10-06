@@ -25,7 +25,6 @@ export const useFetch = (url) => {
         } catch (error) {
             setError(error.message)
         }finally{
-            // "finally" corre SIEMPRE, haya salido bien o mal.
             // Por eso apagamos la carga acá, para no repetir la línea en try y en catch.
             setIsLoading(false)
         }
