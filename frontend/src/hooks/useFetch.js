@@ -25,7 +25,7 @@ export const useFetch = (url) => {
         } catch (error) {
             setError(error.message)
         }finally{
-            // Por eso apagamos la carga acá, para no repetir la línea en try y en catch.
+            // Pegamos esto aca para no repetir la línea en try y en catch.
             setIsLoading(false)
         }
     }
