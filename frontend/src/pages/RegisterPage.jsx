@@ -30,16 +30,29 @@ export const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setLoading(true);
     setErrors([]);
 
-    setTimeout(() => {
+    try{
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formState),
+        credentials: "include"
+      });
+
+      const data = await response.json();
+      console.log(data);
+    }catch(error){
+      setErrors(["Error al registrarse"]);
+    }finally{
       setLoading(false);
-      setErrors(["El email no es válido", "La contraseña es muy corta"]);
-    }, 800);
+      handleReset();}
   };
 
   return (
