@@ -47,14 +47,21 @@ export const RegisterPage = () => {
       });
 
       const data = await response.json();
-      console.log(data);
-    }catch(error){
-      setErrors(["Error al registrarse"]);
-    }finally{
-      setLoading(false);
-      handleReset();}
-  };
 
+      if (!response.ok) {
+        setErrors(data);
+      return;}
+
+
+      handleReset();
+      navigate("/login");
+
+      }catch(error){
+        setErrors(["Error al registrarse"]);
+      }finally{
+        setLoading(false);
+      };
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
