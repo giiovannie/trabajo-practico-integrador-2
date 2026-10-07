@@ -6,8 +6,8 @@ import { HomePage } from "./pages/HomePage.jsx"
 export const App = ()=>{
   return (
     <BrowserRouter>
-      {/* <LoginPage />
-      <RegisterPage/> */}
+     {/* <LoginPage /> */}
+      {/* <RegisterPage/> */}
       <HomePage />
     </BrowserRouter>
   )
