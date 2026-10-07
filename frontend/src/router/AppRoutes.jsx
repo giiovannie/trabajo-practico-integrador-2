@@ -18,6 +18,16 @@ export const AppRouter = () => {
           <Route path="/home" element={<HomePage />} />
         </Route>
       </Routes>
+
+      //esta ruta es para redirigir a la pagina de login si el usuario no esta logueado y quiere acceder a una ruta que no existe, o si el usuario esta logueado y quiere acceder a una ruta que no existe, lo redirige a home
+      <Route
+      path="*"
+      element={
+        localStorage.getItem("isLogged") === "true"
+          ? <Navigate to="/home" />
+          : <Navigate to="/login" />
+      }
+    />
     </BrowserRouter>
   )
 }
